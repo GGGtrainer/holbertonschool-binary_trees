@@ -1,22 +1,19 @@
 #include "binary_trees.h"
-#include <stdlib.h>
 
 /**
- * binary_tree_delete - Deletes an entire binary tree
- * @tree: Pointer to the root node of the tree to delete
+ * binary_tree_is_leaf - Checks if a node is a leaf
+ * @node: Pointer to the node to check
  *
- * Description: Uses post-order traversal to free children before parent
+ * Return: 1 if node is a leaf, 0 otherwise or if node is NULL
  */
-void binary_tree_delete(binary_tree_t *tree)
+int binary_tree_is_leaf(const binary_tree_t *node)
 {
-	if (tree == NULL)
-		return;
+	if (node == NULL)
+		return (0);
 
-	/* Recursively delete left and right children */
-	binary_tree_delete(tree->left);
-	binary_tree_delete(tree->right);
+	if (node->left == NULL && node->right == NULL)
+		return (1);
 
-	/* Free the current node */
-	free(tree);
+	return (0);
 }
 
